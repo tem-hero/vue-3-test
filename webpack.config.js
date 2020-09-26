@@ -1,16 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     mode: 'development',
     entry: './src/main.js',
     output: {
-        filename: 'bundle.js',
+        filename: 'bundle-[hash].js',
         path: path.resolve(__dirname, 'dist'),
     },
     devtool: 'inline-source-map',
     devServer: {
-        // contentBase: './dist',
+        contentBase: './dist',
         hot: true,
     },
     optimization: {
@@ -21,9 +22,20 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
+                enforce: 'pre',
+                test: /\.(js|vue)$/,
+                loader: 'eslint-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
+                test: /\.ts$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
+                options: { appendTsSuffixTo: [/\.vue$/] },
             },
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -42,13 +54,14 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js', '.vue'],
+        extensions: ['.ts', '.js'],
     },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Vue-3-test',
             template: 'public/index.html',
         }),
+        new VueLoaderPlugin(),
 
     ],
 };
