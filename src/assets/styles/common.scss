@@ -1,0 +1,72 @@
+@import 'src/assets/styles/_vars.scss';
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'),
+    url('../fonts/roboto-v20-cyrillic-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'), local('Roboto-Bold'),
+    url('../fonts/roboto-v20-cyrillic-700.woff2') format('woff2');
+}
+
+.meal-title {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.invalid-field {
+    border: 1px solid #dc143c;
+    outline: #dc143c;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    box-shadow: 0 2px 8px 0 rgba(147, 147, 147, 0.19);
+}
+
+.btn-main {
+    color: #ffffff;
+    background-color: $primaryColor;
+
+    &:hover {
+        background-color: $highlightColor;
+    }
+}
+
+.btn-warning {
+    color: #ffffff;
+    background-color: #dc143c;
+
+    &:hover {
+        background-color: #f73259;
+    }
+}
+
+.btn-secondary {
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+
+    &:hover {
+        background-color: #ececec;
+    }
+}
+
+.input-main {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+}
